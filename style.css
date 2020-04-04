@@ -26,6 +26,12 @@
 	position: relative;
 }
 
+.player-container img {
+	position: absolute;
+	height: 15%;
+	width: 15%;
+}
+
 .player-container svg {
 	position: absolute;
 	height: 50%;
@@ -35,20 +41,18 @@
 	pointer-events: none;
 }
 
-
 .time-display {
 	position: absolute;
 	bottom: 10%;
 	color: white;
-	font-size: 50px;
+	font-size: 4vw;
+	font-size: 4vh;
 }
 
 video {
 	position: fixed;
-	top: 0%;
-	left: 0%;
-	width: 100%;
 	z-index: -10;
+	background-size: cover;
 }
 
 .time-select button,
@@ -60,7 +64,8 @@ video {
 	border: 2px solid white;
 	cursor: pointer;
 	border-radius: 5px;
-	font-size: 20px;
+	font-size: 2.5vw;
+	font-size: 2.5vh;
 	transition: all 0.5s ease;
 }
 
@@ -71,10 +76,10 @@ video {
 
 .sound-picker button {
 	border: none;
-	height: 120px;
-	width: 120px;
+	height: 20%;
+	width: auto;
 	border-radius: 50%;
-	padding: 30px;
+	padding: 2%;
 }
 
 .sound-picker button:nth-child(1) {
