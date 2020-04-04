@@ -35,6 +35,8 @@ const app = () => {
 	// Select sound
 	timeSelect.forEach(option => {
 			option.addEventListener('click', function(){
+				let currentTime = song.currentTime;
+				let elapsed = fakeDuration - currentTime;
 				let seconds = Math.floor(elapsed % 60);
 				let minutes = Math.floor(elapsed / 60);
 				if(seconds < 10){
