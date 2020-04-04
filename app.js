@@ -12,7 +12,7 @@ const app = () => {
 	// Get the length of the outline
 	const outlineLength = outline.getTotalLength();
 	// Duration
-	let fakeDuration = 600;
+	let fakeDuration = timeSelect[0].getAttribute('data-time');
 
 	outline.style.strokeDasharray = outlineLength;
 	outline.style.strokeDashoffset = outlineLength;
@@ -35,8 +35,18 @@ const app = () => {
 	// Select sound
 	timeSelect.forEach(option => {
 			option.addEventListener('click', function(){
+				let seconds = Math.floor(elapsed % 60);
+				let minutes = Math.floor(elapsed / 60);
+				if(seconds < 10){
+					seconds = '0' + seconds;
+				}
+
 				fakeDuration = this.getAttribute('data-time');
-				timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration % 60)}`;
+
+				timeDisplay.textContent = `${minutes}:${seconds}`;
+				song.load();
+				video.load();
+				checkPlaying(song);
 			});
 	});
 
@@ -60,6 +70,9 @@ const app = () => {
 		let elapsed = fakeDuration - currentTime;
 		let seconds = Math.floor(elapsed % 60);
 		let minutes = Math.floor(elapsed / 60);
+		if(seconds < 10){
+			seconds = '0' + seconds;
+		}
 
 		// Animate the circle
 		let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
